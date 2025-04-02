@@ -10,5 +10,6 @@ fun AddedTaskDomainModel.toEntity() =
         description = this.description,
         tableTag = this.tableTag.toString(),
         priorityTag = this.priorityTag.toString(),
-        createdAt = this.createdAt.toString()
+        createdAt = this.createdAt.toString(),
+        lastUpdated = this.lastUpdated.toString(),
     )

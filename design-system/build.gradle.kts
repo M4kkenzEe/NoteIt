@@ -49,4 +49,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation("androidx.compose.foundation:foundation:1.6.0")
+    implementation ("androidx.compose.ui:ui:1.7.0")
 }

@@ -10,6 +10,7 @@ fun TaskModel.toDomain() = TaskDomain(
     tableTag = tableTag,
     priorityTag = priorityTag,
     createdAt = createdAt,
+    lastUpdated = lastUpdated
 )
 
 fun TaskDomain.toModel() = TaskModel(
@@ -19,4 +20,5 @@ fun TaskDomain.toModel() = TaskModel(
     tableTag = tableTag,
     priorityTag = priorityTag,
     createdAt = createdAt,
+    lastUpdated = lastUpdated
 )

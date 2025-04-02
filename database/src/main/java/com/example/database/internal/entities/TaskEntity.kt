@@ -11,5 +11,6 @@ data class TaskEntity(
     @ColumnInfo val description: String?,
     @ColumnInfo val tableTag: String?,
     @ColumnInfo val priorityTag: String?,
-    @ColumnInfo val createdAt: String
+    @ColumnInfo val createdAt: String,
+    @ColumnInfo val lastUpdated: String
 )

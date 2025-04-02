@@ -18,12 +18,14 @@ class TaskRepositoryImpl(private val taskDao: TaskDao) : TaskRepository {
     }
 
     override suspend fun editTask(taskModel: TaskDomain) {
+        val task = taskModel.toEntity()
         taskDao.editTask(
-            id = taskModel.id,
-            title = taskModel.title,
-            description = taskModel.description,
-            tag = taskModel.tableTag.toString(),
-            priorityTag = taskModel.priorityTag.toString()
+            id = task.id,
+            title = task.title!!,
+            description = task.description!!,
+            tag = task.tableTag.toString(),
+            priorityTag = task.priorityTag.toString(),
+            lastUpdated = task.lastUpdated
         )
     }
 
