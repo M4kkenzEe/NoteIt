@@ -9,6 +9,7 @@ import com.example.design_system.model.TableTag
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 class AddTaskViewModel(private val useCase: AddTaskUseCase) : ViewModel() {
 
@@ -20,7 +21,8 @@ class AddTaskViewModel(private val useCase: AddTaskUseCase) : ViewModel() {
                 description = desc,
                 tableTag = TableTag.NOT_STARTED,
                 priorityTag = priorityTag,
-                createdAt = LocalDate.now()
+                createdAt = LocalDate.now(),
+                lastUpdated = LocalDateTime.now()
             )
             useCase.execute(taskDomain)
         }

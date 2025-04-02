@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 class TableViewModel(private val taskUseCase: TaskUseCase) : ViewModel() {
 
@@ -51,6 +52,7 @@ class TableViewModel(private val taskUseCase: TaskUseCase) : ViewModel() {
             tableTag = currentTaskState.value?.tableTag!!,
             priorityTag = priorityTag,
             createdAt = currentTaskState.value?.createdAt!!,
+            lastUpdated = LocalDateTime.now()
         )
         viewModelScope.launch(Dispatchers.IO) {
             try {
@@ -69,7 +71,8 @@ class TableViewModel(private val taskUseCase: TaskUseCase) : ViewModel() {
             description = taskDomain.description,
             tableTag = tag,
             createdAt = taskDomain.createdAt,
-            priorityTag = taskDomain.priorityTag
+            priorityTag = taskDomain.priorityTag,
+            lastUpdated = LocalDateTime.now()
         )
 
         viewModelScope.launch(Dispatchers.IO) {

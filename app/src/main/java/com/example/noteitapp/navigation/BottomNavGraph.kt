@@ -6,7 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.addtask.presentation.AddTaskScreen
-import com.example.design_system.components.toast.NoteToastPrev
+import com.example.design_system.components.toast.NoteToast
 import com.example.table.presentation.compose.TableScreen
 
 @Composable
@@ -29,7 +29,7 @@ fun BottomNavGraph(modifier: Modifier = Modifier, navController: NavHostControll
         }
 
         composable(BottomBarScreens.ProgressScreen.route) {
-            NoteToastPrev()
+            NoteToast()
         }
     }
 }

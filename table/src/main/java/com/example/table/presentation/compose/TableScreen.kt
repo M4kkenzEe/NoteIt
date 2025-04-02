@@ -48,7 +48,6 @@ import com.example.design_system.GrayBorder
 import com.example.design_system.GrayEe
 import com.example.design_system.components.bottomsheet.BottomSheetScreen
 import com.example.design_system.components.card.CardTaskScreen
-import com.example.design_system.components.toast.NoteToast
 import com.example.design_system.model.TableTag
 import com.example.table.R
 import com.example.table.domain.model.TaskDomain
@@ -71,15 +70,18 @@ fun TableScreen(viewModel: TableViewModel = koinViewModel()) {
 
     val notStartedTasks =
         tasksByCategory?.groupBy { it.tableTag }?.get(TableTag.NOT_STARTED)
-            ?.filter { it.createdAt == viewModel.todayIsState.value }?.reversed()
+            ?.filter { it.createdAt == viewModel.todayIsState.value }?.sortedBy { it.lastUpdated }
+            ?.reversed()
             ?: emptyList()
     val inProgressTasks =
-        tasksByCategory?.groupBy { it.tableTag }?.get(TableTag.IN_PROGRESS)?.reversed()
-            ?.filter { it.createdAt == viewModel.todayIsState.value }
+        tasksByCategory?.groupBy { it.tableTag }?.get(TableTag.IN_PROGRESS)
+            ?.filter { it.createdAt == viewModel.todayIsState.value }?.sortedBy { it.lastUpdated }
+            ?.reversed()
             ?: emptyList()
     val finishedTasks =
-        tasksByCategory?.groupBy { it.tableTag }?.get(TableTag.FINISHED)?.reversed()
-            ?.filter { it.createdAt == viewModel.todayIsState.value }
+        tasksByCategory?.groupBy { it.tableTag }?.get(TableTag.FINISHED)
+            ?.filter { it.createdAt == viewModel.todayIsState.value }?.sortedBy { it.lastUpdated }
+            ?.reversed()
             ?: emptyList()
 
     var sheetState by remember {

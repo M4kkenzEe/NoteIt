@@ -5,6 +5,7 @@ import com.example.design_system.model.PriorityTag
 import com.example.design_system.model.TableTag
 import com.example.table.domain.model.TaskDomain
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 fun TaskDomain.toEntity() =
     TaskEntity(
@@ -13,7 +14,8 @@ fun TaskDomain.toEntity() =
         description = this.description,
         tableTag = this.tableTag.toString(),
         priorityTag = this.priorityTag.toString(),
-        createdAt = this.createdAt.toString()
+        createdAt = this.createdAt.toString(),
+        lastUpdated = this.lastUpdated.toString()
     )
 
 fun TaskEntity.toDomain() =
@@ -25,5 +27,6 @@ fun TaskEntity.toDomain() =
         priorityTag = PriorityTag.valueOf(
             this.priorityTag ?: PriorityTag.GREEN.toString()
         ),
-        createdAt = LocalDate.parse(this.createdAt)
+        createdAt = LocalDate.parse(this.createdAt),
+        lastUpdated = LocalDateTime.parse(this.lastUpdated)
     )
